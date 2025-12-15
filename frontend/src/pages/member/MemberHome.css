@@ -1,0 +1,320 @@
+/* 会员首页样式 */
+.member-home-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.member-home-header {
+  text-align: center;
+  padding: 40px 0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 12px;
+  margin-bottom: 30px;
+  box-shadow: 0 8px 32px rgba(102, 126, 234, 0.3);
+}
+
+.member-home-header h1 {
+  margin: 0 0 10px 0;
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.member-home-header p {
+  margin: 0;
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+.member-features-section,
+.member-actions-section,
+.member-announcements {
+  background: white;
+  border-radius: 12px;
+  padding: 30px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.member-features-section:hover,
+.member-actions-section:hover,
+.member-announcements:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+}
+
+.member-features-section h2,
+.member-actions-section h2,
+.member-announcements h2 {
+  color: #333;
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+  font-weight: 600;
+  border-bottom: 3px solid #667eea;
+  padding-bottom: 10px;
+}
+
+.feature-buttons-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.feature-card {
+  background: #f8f9fa;
+  border-radius: 10px;
+  padding: 25px;
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 1px solid #e9ecef;
+}
+
+.feature-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  border-color: #667eea;
+}
+
+.feature-card h3 {
+  color: #495057;
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.feature-card p {
+  color: #6c757d;
+  margin-bottom: 20px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.feature-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  min-width: 150px;
+}
+
+.primary-button {
+  background: #667eea;
+  color: white;
+}
+
+.primary-button:hover {
+  background: #5a67d8;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.secondary-button {
+  background: #f56565;
+  color: white;
+}
+
+.secondary-button:hover {
+  background: #e53e3e;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(245, 101, 101, 0.4);
+}
+
+.success-button {
+  background: #38a169;
+  color: white;
+}
+
+.success-button:hover {
+  background: #2f855a;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(56, 161, 105, 0.4);
+}
+
+.warning-button {
+  background: #f6ad55;
+  color: white;
+  position: relative;
+  padding-right: 40px;
+}
+
+.warning-button:hover {
+  background: #ed8936;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(246, 173, 85, 0.4);
+}
+
+.unread-badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: #ef4444;
+  color: white;
+  border-radius: 50%;
+  min-width: 20px;
+  height: 20px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 6px;
+}
+
+.info-button {
+  background: #3182ce;
+  color: white;
+}
+
+.info-button:hover {
+  background: #2c5282;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(49, 130, 206, 0.4);
+}
+
+.quick-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+}
+
+.action-button {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.profile-button {
+  background: #667eea;
+  color: white;
+}
+
+.profile-button:hover {
+  background: #5a67d8;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.password-button {
+  background: #f56565;
+  color: white;
+}
+
+.password-button:hover {
+  background: #e53e3e;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(245, 101, 101, 0.4);
+}
+
+.logout-button {
+  background: #4a5568;
+  color: white;
+}
+
+.logout-button:hover {
+  background: #2d3748;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(74, 85, 104, 0.4);
+}
+
+.announcement-card {
+  background: #ebf8ff;
+  border: 1px solid #bee3f8;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 15px;
+}
+
+.announcement-card h3 {
+  color: #2b6cb0;
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.announcement-card p {
+  color: #2d3748;
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+.announcement-card small {
+  color: #718096;
+  font-size: 0.85rem;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .member-home-container {
+    padding: 15px;
+  }
+
+  .member-home-header {
+    padding: 30px 0;
+  }
+
+  .member-home-header h1 {
+    font-size: 2rem;
+  }
+
+  .feature-buttons-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .quick-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .action-button {
+    width: 100%;
+  }
+
+  .member-features-section,
+  .member-actions-section,
+  .member-announcements {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .member-home-header h1 {
+    font-size: 1.7rem;
+  }
+
+  .member-home-header p {
+    font-size: 1rem;
+  }
+
+  .member-features-section h2,
+  .member-actions-section h2,
+  .member-announcements h2 {
+    font-size: 1.5rem;
+  }
+
+  .feature-button {
+    padding: 12px 15px;
+    font-size: 0.9rem;
+  }
+}

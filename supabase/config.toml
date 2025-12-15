@@ -1,0 +1,22 @@
+[global.api]
+# 启用REST接口
+enable_rest = true
+
+[global.auth]
+# 启用电子邮件确认
+enable_email_confirmations = true
+
+[global.storage]
+# 启用文件存储
+enable_storage = true
+
+[functions]
+# 函数超时设置
+timeout_ms = 30000
+
+# 允许的CORS源
+cors_origins = [
+  "https://*.github.io",
+  "http://localhost:5173",
+  "http://localhost:3000"
+]

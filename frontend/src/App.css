@@ -1,0 +1,46 @@
+* {
+  box-sizing: border-box;
+}
+
+.app {
+  min-height: 100vh;
+  background-color: #f5f5f5;
+}
+
+.home-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.home-container h1 {
+  color: #333;
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+.home-container p {
+  color: #666;
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+
+.home-container button {
+  background-color: #e53935;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.home-container button:hover {
+  background-color: #c62828;
+}
+
+.home-container button:active {
+  background-color: #b71c1c;
+}

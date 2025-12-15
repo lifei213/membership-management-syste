@@ -1,0 +1,291 @@
+/* 消息列表页面样式 */
+.messages-list-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+}
+
+.messages-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #667eea;
+}
+
+.messages-header h1 {
+  color: #333;
+  margin: 0;
+  font-size: 2rem;
+}
+
+.back-button {
+  padding: 10px 20px;
+  background-color: #667eea;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.back-button:hover {
+  background-color: #5a67d8;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+/* 加载状态 */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 0;
+  color: #667eea;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #667eea;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 15px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* 错误消息 */
+.error-message {
+  background-color: #fed7d7;
+  color: #c53030;
+  padding: 15px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  border-left: 4px solid #c53030;
+}
+
+/* 消息统计信息 */
+.messages-stats {
+  background-color: #ebf8ff;
+  color: #2b6cb0;
+  padding: 12px 15px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  font-size: 0.9rem;
+}
+
+/* 无消息状态 */
+.no-messages {
+  text-align: center;
+  padding: 60px 0;
+  color: #718096;
+  font-size: 1.1rem;
+}
+
+/* 消息表格容器 */
+.messages-table-container {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  margin-bottom: 30px;
+}
+
+/* 消息表格 */
+.messages-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.messages-table thead {
+  background-color: #f8f9fa;
+  border-bottom: 2px solid #e9ecef;
+}
+
+.messages-table th {
+  padding: 15px;
+  text-align: left;
+  font-weight: 600;
+  color: #495057;
+  font-size: 0.95rem;
+}
+
+.messages-table td {
+  padding: 15px;
+  border-bottom: 1px solid #e9ecef;
+  color: #495057;
+  font-size: 0.95rem;
+}
+
+/* 未读消息样式 */
+.unread-message {
+  background-color: #f8f8ff;
+  font-weight: 500;
+}
+
+.unread-badge-small {
+  background-color: #667eea;
+  color: white;
+  padding: 3px 8px;
+  border-radius: 10px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.read-badge {
+  color: #718096;
+  font-size: 0.8rem;
+}
+
+/* 消息主题样式 */
+.message-subject {
+  max-width: 300px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* 查看按钮样式 */
+.view-button {
+  background-color: #667eea;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.view-button:hover {
+  background-color: #5a67d8;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+}
+
+/* 分页控件样式 */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+  gap: 10px;
+}
+
+.page-button {
+  background-color: white;
+  color: #4a5568;
+  border: 1px solid #e2e8f0;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.9rem;
+}
+
+.page-button:hover:not(:disabled) {
+  background-color: #f7fafc;
+  border-color: #cbd5e0;
+}
+
+.page-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.page-numbers {
+  display: flex;
+  gap: 5px;
+}
+
+.page-number {
+  background-color: white;
+  color: #4a5568;
+  border: 1px solid #e2e8f0;
+  width: 36px;
+  height: 36px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.page-number:hover {
+  background-color: #f7fafc;
+  border-color: #cbd5e0;
+}
+
+.page-number.active {
+  background-color: #667eea;
+  color: white;
+  border-color: #667eea;
+  font-weight: 600;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .messages-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+  
+  .messages-header h1 {
+    font-size: 1.5rem;
+  }
+  
+  .messages-table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  
+  .pagination {
+    flex-wrap: wrap;
+  }
+  
+  .page-numbers {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 480px) {
+  .messages-list-container {
+    padding: 15px;
+  }
+  
+  .back-button {
+    width: 100%;
+  }
+  
+  .messages-table th,
+  .messages-table td {
+    padding: 10px;
+    font-size: 0.85rem;
+  }
+  
+  .message-subject {
+    max-width: 150px;
+  }
+  
+  .view-button {
+    padding: 6px 10px;
+    font-size: 0.8rem;
+  }
+}
