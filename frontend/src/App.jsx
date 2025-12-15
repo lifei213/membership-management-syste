@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 
 // 获取base路径，用于GitHub Pages部署
-const basename = process.env.NODE_ENV === 'production' ? '/membership-management-system/' : '/';
+const basename = process.env.NODE_ENV === 'production' ? '/membership-management-syste/' : '/';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import AuthRoute from './components/AuthRoute';
