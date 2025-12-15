@@ -7,7 +7,7 @@ export default defineConfig(({ mode }) => {
   
   return {
     plugins: [react()],
-    base: env.NODE_ENV === 'production' ? '/membership-management-system/' : '/',
+    base: env.NODE_ENV === 'production' ? '/membership-management-syste/' : '/',
     server: {
       proxy: {
         '/api': {
