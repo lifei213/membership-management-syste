@@ -27,9 +27,11 @@ serve(async (req: Request) => {
       }
     )
 
-    // 解析请求路径
+    // 解析请求路径 - 适配前端API调用路径
     const url = new URL(req.url)
-    const pathname = url.pathname.replace('/api/', '')
+    // 对于Supabase Edge Functions，完整路径是 /functions/v1/[function-name]/[path]
+    // 我们需要获取function-name之后的路径部分
+    const pathname = url.pathname.replace(/^\/functions\/v1\/api\//, '')
 
     // 根据路径路由到不同的处理函数
     switch (pathname) {
@@ -67,14 +69,66 @@ serve(async (req: Request) => {
 async function handleLogin(req: Request, supabaseClient: any): Promise<Response> {
   const { username, password } = await req.json()
   
-  // 这里需要实现登录逻辑
-  // 暂时返回模拟响应
-  return new Response(JSON.stringify({ 
-    message: 'Login endpoint - to be implemented',
-    username 
-  }), {
-    headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-  })
+  try {
+    // 在数据库中查找用户
+    const { data: users, error } = await supabaseClient
+      .from('users')
+      .select('*')
+      .eq('username', username)
+      .single()
+    
+    if (error) {
+      throw new Error('用户不存在')
+    }
+    
+    if (!users) {
+      return new Response(JSON.stringify({ 
+        message: '用户名或密码错误',
+        code: 'INVALID_CREDENTIALS'
+      }), {
+        status: 401,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      })
+    }
+    
+    // 简单的密码比较（实际应用中应该使用bcrypt等安全哈希算法）
+    if (users.password !== password) {
+      return new Response(JSON.stringify({ 
+        message: '用户名或密码错误',
+        code: 'INVALID_CREDENTIALS'
+      }), {
+        status: 401,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      })
+    }
+    
+    // 生成简单的JWT令牌（实际应用中应该使用安全的JWT库）
+    const token = 'mock-jwt-token-' + Date.now()
+    
+    // 返回用户信息和令牌
+    return new Response(JSON.stringify({ 
+      message: '登录成功',
+      token,
+      user: {
+        id: users.id,
+        username: users.username,
+        email: users.email,
+        role: users.role,
+        is_active: users.is_active
+      }
+    }), {
+      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+    })
+  } catch (error) {
+    const errorMessage = error instanceof Error ? error.message : '登录失败'
+    return new Response(JSON.stringify({ 
+      message: errorMessage,
+      code: 'LOGIN_FAILED'
+    }), {
+      status: 500,
+      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+    })
+  }
 }
 
 // 注册处理函数
