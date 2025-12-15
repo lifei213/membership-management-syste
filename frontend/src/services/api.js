@@ -6,8 +6,9 @@ const getApiBaseUrl = () => {
   if (import.meta.env.DEV) {
     return '/api';
   }
-  // 生产环境使用环境变量或默认值
-  return import.meta.env.VITE_API_BASE_URL || '/api';
+  // 生产环境使用环境变量，确保指向正确的API地址
+  // 注意：在GitHub Pages部署中，需要设置完整的API URL
+  return import.meta.env.VITE_API_BASE_URL;
 };
 
 // 创建axios实例

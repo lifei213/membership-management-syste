@@ -6,7 +6,7 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 }
 
-serve(async (req) => {
+serve(async (req: Request) => {
   // 处理CORS预检请求
   if (req.method === 'OPTIONS') {
     return new Response('ok', { headers: corsHeaders })
@@ -14,9 +14,12 @@ serve(async (req) => {
 
   try {
     // 创建Supabase客户端
+    const supabaseUrl = Deno.env.get('SUPABASE_URL') ?? ''
+    const supabaseAnonKey = Deno.env.get('SUPABASE_ANON_KEY') ?? ''
+    
     const supabaseClient = createClient(
-      Deno.env.get('SUPABASE_URL') ?? '',
-      Deno.env.get('SUPABASE_ANON_KEY') ?? '',
+      supabaseUrl,
+      supabaseAnonKey,
       {
         global: {
           headers: { Authorization: req.headers.get('Authorization')! },
@@ -52,7 +55,8 @@ serve(async (req) => {
     }
   } catch (error) {
     console.error('API Error:', error)
-    return new Response(JSON.stringify({ error: error.message }), {
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred'
+    return new Response(JSON.stringify({ error: errorMessage }), {
       status: 500,
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
     })
@@ -60,7 +64,7 @@ serve(async (req) => {
 })
 
 // 登录处理函数
-async function handleLogin(req: Request, supabaseClient: any) {
+async function handleLogin(req: Request, supabaseClient: any): Promise<Response> {
   const { username, password } = await req.json()
   
   // 这里需要实现登录逻辑
@@ -69,12 +73,12 @@ async function handleLogin(req: Request, supabaseClient: any) {
     message: 'Login endpoint - to be implemented',
     username 
   }), {
-    headers: { 'Content-Type': 'application/json' },
+    headers: { ...corsHeaders, 'Content-Type': 'application/json' },
   })
 }
 
 // 注册处理函数
-async function handleRegister(req: Request, supabaseClient: any) {
+async function handleRegister(req: Request, supabaseClient: any): Promise<Response> {
   const { username, email, password } = await req.json()
   
   // 这里需要实现注册逻辑
@@ -84,32 +88,32 @@ async function handleRegister(req: Request, supabaseClient: any) {
     username,
     email
   }), {
-    headers: { 'Content-Type': 'application/json' },
+    headers: { ...corsHeaders, 'Content-Type': 'application/json' },
   })
 }
 
 // 会员管理处理函数
-async function handleMembers(req: Request, supabaseClient: any) {
+async function handleMembers(req: Request, supabaseClient: any): Promise<Response> {
   // 这里需要实现会员管理逻辑
   return new Response(JSON.stringify({ 
     message: 'Members endpoint - to be implemented'
   }), {
-    headers: { 'Content-Type': 'application/json' },
+    headers: { ...corsHeaders, 'Content-Type': 'application/json' },
   })
 }
 
 // 会员消息处理函数
-async function handleMemberMessages(req: Request, supabaseClient: any) {
+async function handleMemberMessages(req: Request, supabaseClient: any): Promise<Response> {
   // 这里需要实现会员消息逻辑
   return new Response(JSON.stringify({ 
     message: 'Member messages endpoint - to be implemented'
   }), {
-    headers: { 'Content-Type': 'application/json' },
+    headers: { ...corsHeaders, 'Content-Type': 'application/json' },
   })
 }
 
 // 发送消息给管理员处理函数
-async function handleSendMessageToAdmin(req: Request, supabaseClient: any) {
+async function handleSendMessageToAdmin(req: Request, supabaseClient: any): Promise<Response> {
   const { subject, content } = await req.json()
   
   // 这里需要实现发送消息逻辑
@@ -118,6 +122,6 @@ async function handleSendMessageToAdmin(req: Request, supabaseClient: any) {
     subject,
     content
   }), {
-    headers: { 'Content-Type': 'application/json' },
+    headers: { ...corsHeaders, 'Content-Type': 'application/json' },
   })
 }

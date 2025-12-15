@@ -1,5 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+
+// 获取base路径，用于GitHub Pages部署
+const basename = process.env.NODE_ENV === 'production' ? '/membership-management-system/' : '/';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import AuthRoute from './components/AuthRoute';
@@ -56,7 +59,7 @@ const Home = () => {
 
 function App() {
   return (
-    <Router>
+    <Router basename={basename}>
       <div className="app">
         <Routes>
           {/* 公开路由 */}
